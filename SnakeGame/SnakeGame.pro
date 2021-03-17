@@ -26,10 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    openglwindow.cpp
+    openglwindow.cpp \
+    trianglewindow.cpp
 
 HEADERS += \
-    openglwindow.h
+    openglwindow.h \
+    trianglewindow.h
 
 FORMS +=
 

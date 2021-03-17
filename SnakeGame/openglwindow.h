@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QOpenGLFunctions>
 #include <QOpenGLPaintDevice>
+#include <QScreen>
 
 class OpenGLWindow : public QWindow, protected QOpenGLFunctions
 {

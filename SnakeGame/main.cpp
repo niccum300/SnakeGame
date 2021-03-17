@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QSurfaceFormat>
-#include "openglwindow.h"
+#include "trianglewindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QSurfaceFormat format;
     format.setSamples(16);
 
-    OpenGLWindow mywindow;
+    TriangleWindow mywindow;
     mywindow.setFormat(format);
     mywindow.resize(640, 480);
     mywindow.show();

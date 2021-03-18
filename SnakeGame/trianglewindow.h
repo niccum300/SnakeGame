@@ -23,6 +23,8 @@ private:
     GLint m_posAttr = 0;
     GLint m_colAttr = 0;
     GLint m_matrixUniform = 0;
+    QMatrix4x4 matrix;
+
 
     QOpenGLShaderProgram *m_program = nullptr;
     int m_frame = 0;

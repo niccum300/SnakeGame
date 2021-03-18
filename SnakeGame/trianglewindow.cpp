@@ -12,6 +12,8 @@ void TriangleWindow::initialize()
     Q_ASSERT(m_colAttr != -1);
     m_matrixUniform = m_program->uniformLocation("matrix");
     Q_ASSERT(m_matrixUniform != -1);
+    matrix.perspective(45.0f, 4.0f / 3.0f, 0.1f, 50.0f);
+    matrix.translate(0, 0, -10);
 }
 
 void TriangleWindow::render()
@@ -23,10 +25,10 @@ void TriangleWindow::render()
 
     m_program->bind();
 
-    QMatrix4x4 matrix;
-    matrix.perspective(60.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-    matrix.translate(0, 0, -2);
-    matrix.rotate(100.0f * m_frame / screen()->refreshRate(), 0, 1, 0);
+//    QMatrix4x4 matrix;
+//    matrix.perspective(60.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+//    matrix.translate(0, 0, -2);
+    //matrix.rotate(100.0f * m_frame / screen()->refreshRate(), 0, 1, 0);
 
     m_program->setUniformValue(m_matrixUniform, matrix);
 
@@ -65,27 +67,33 @@ void TriangleWindow::keyPressEvent(QKeyEvent *event)
        std::cout << "Escape got pressed" << std::endl;
         break;
     case Qt::Key_W:
+        matrix.translate(0, 0, 0.5);
        std::cout << "W got pressed" << std::endl;
         break;
     case Qt::Key_A:
        std::cout << "A got pressed" << std::endl;
         break;
     case Qt::Key_S:
+        matrix.translate(0, 0, -0.5);
         std::cout << "S got pressed" << std::endl;
         break;
     case Qt::Key_D:
         std::cout << "D got pressed" << std::endl;
         break;
     case Qt::Key_Up:
+        matrix.translate(0, 0.1, 0);
        std::cout << "Up got pressed" << std::endl;
         break;
     case Qt::Key_Down:
+        matrix.translate(0, -0.1, 0);
        std::cout << "Down got pressed" << std::endl;
         break;
     case Qt::Key_Left:
+        matrix.translate(-0.1, 0, 0);
         std::cout << "Left got pressed" << std::endl;
         break;
     case Qt::Key_Right:
+        matrix.translate(0.1, 0, 0);
         std::cout << "Right got pressed" << std::endl;
         break;
 

@@ -4,6 +4,8 @@
 #include "openglwindow.h"
 #include <QOpenGLShaderProgram>
 #include <QOpenGLShaderProgram>
+#include <QKeyEvent>
+#include <iostream>
 
 class TriangleWindow : public OpenGLWindow
 {
@@ -12,6 +14,10 @@ public:
 
     void initialize() override;
     void render() override;
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
 
 private:
     GLint m_posAttr = 0;

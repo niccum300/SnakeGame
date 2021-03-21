@@ -24,6 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+LIBS += -lopengl32
+
 SOURCES += \
         main.cpp \
     openglwindow.cpp \

@@ -2,18 +2,7 @@
 
 void TriangleWindow::initialize()
 {
-    m_program = new QOpenGLShaderProgram(this);
-    m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, vertexShaderSource);
-    m_program->addShaderFromSourceCode(QOpenGLShader::Fragment, fragmentShaderSource);
-    m_program->link();
-    m_posAttr = m_program->attributeLocation("posAttr");
-    Q_ASSERT(m_posAttr != -1);
-    m_colAttr = m_program->attributeLocation("colAttr");
-    Q_ASSERT(m_colAttr != -1);
-    m_matrixUniform = m_program->uniformLocation("matrix");
-    Q_ASSERT(m_matrixUniform != -1);
-    matrix.perspective(45.0f, 4.0f / 3.0f, 0.1f, 50.0f);
-    matrix.translate(0, 0, -10);
+
 }
 
 void TriangleWindow::render()
@@ -22,40 +11,33 @@ void TriangleWindow::render()
     glViewport(0, 0, width() * retinaScale, height() * retinaScale);
 
     glClear(GL_COLOR_BUFFER_BIT);
-
-    m_program->bind();
-
-//    QMatrix4x4 matrix;
-//    matrix.perspective(60.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-//    matrix.translate(0, 0, -2);
-    //matrix.rotate(100.0f * m_frame / screen()->refreshRate(), 0, 1, 0);
-
-    m_program->setUniformValue(m_matrixUniform, matrix);
-
     static const GLfloat vertices[] = {
-         0.0f,  0.707f,
-        -0.5f, -0.5f,
-         0.5f, -0.5f
+        // first triangle
+         0.5f,  0.5f, 0.0f,  // top right
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f,  0.5f, 0.0f,  // top left
+        // second triangle
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+        -0.5f,  0.5f, 0.0f
     };
 
-    static const GLfloat colors[] = {
-        1.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 1.0f
-    };
+    unsigned int VBO;
+    glGenBuffers(1, &VBO);
 
-    glVertexAttribPointer(m_posAttr, 2, GL_FLOAT, GL_FALSE, 0, vertices);
-    glVertexAttribPointer(m_colAttr, 3, GL_FLOAT, GL_FALSE, 0, colors);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    glEnableVertexAttribArray(m_posAttr);
-    glEnableVertexAttribArray(m_colAttr);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof (float), (void*)0);
+
+    glEnableVertexAttribArray(0);
 
     glDrawArrays(GL_TRIANGLES, 0, 3);
 
-    glDisableVertexAttribArray(m_colAttr);
-    glDisableVertexAttribArray(m_posAttr);
+    glDisableVertexAttribArray(0);
 
-    m_program->release();
 
     ++m_frame;
 }
@@ -67,36 +49,41 @@ void TriangleWindow::keyPressEvent(QKeyEvent *event)
        std::cout << "Escape got pressed" << std::endl;
         break;
     case Qt::Key_W:
-        matrix.translate(0, 0, 0.5);
+        glTranslatef(0.0, 0.1, 0.0);
        std::cout << "W got pressed" << std::endl;
         break;
     case Qt::Key_A:
+        glTranslatef(-0.1, 0.0, 0.0);
        std::cout << "A got pressed" << std::endl;
         break;
     case Qt::Key_S:
-        matrix.translate(0, 0, -0.5);
+        glTranslatef(0.0f, -0.1, 0.0);
         std::cout << "S got pressed" << std::endl;
         break;
     case Qt::Key_D:
+        glTranslatef(0.1, 0.0, 0.0);
         std::cout << "D got pressed" << std::endl;
         break;
     case Qt::Key_Up:
-        matrix.translate(0, 0.1, 0);
        std::cout << "Up got pressed" << std::endl;
         break;
     case Qt::Key_Down:
-        matrix.translate(0, -0.1, 0);
        std::cout << "Down got pressed" << std::endl;
         break;
     case Qt::Key_Left:
-        matrix.translate(-0.1, 0, 0);
         std::cout << "Left got pressed" << std::endl;
         break;
     case Qt::Key_Right:
-        matrix.translate(0.1, 0, 0);
         std::cout << "Right got pressed" << std::endl;
         break;
-
+    case Qt::Key_1:
+        glTranslatef(0.0, 0.0, -0.5);
+        std::cout << "One got pressed" << std::endl;
+        break;
+    case Qt::Key_2:
+        glTranslatef(0.0, 0.0, 0.5);
+        std::cout << "Two got pressed" << std::endl;
+        break;
     }
 }
 

@@ -5,6 +5,7 @@
 #include <QOpenGLShaderProgram>
 #include <QKeyEvent>
 #include <iostream>
+#include <GL/glu.h>
 
 class TriangleWindow : public OpenGLWindow
 {
@@ -22,27 +23,18 @@ private:
     GLint m_posAttr = 0;
     GLint m_colAttr = 0;
     GLint m_matrixUniform = 0;
-    QMatrix4x4 matrix;
 
+    GLfloat vertices[9] = {
+        16.5f,  16.5f, 0.0f,  // top right
+        16.5f, -16.5f, 0.0f,  // bottom right
+       -16.5f,  16.5f, 0.0f  // top left
+    };
+
+    GLfloat *verticesPtr = vertices;
 
     QOpenGLShaderProgram *m_program = nullptr;
     int m_frame = 0;
 
-    const char *vertexShaderSource =
-        "attribute highp vec4 posAttr;\n"
-        "attribute lowp vec4 colAttr;\n"
-        "varying lowp vec4 col;\n"
-        "uniform highp mat4 matrix;\n"
-        "void main() {\n"
-        "   col = colAttr;\n"
-        "   gl_Position = matrix * posAttr;\n"
-        "}\n";
-
-    const char *fragmentShaderSource =
-        "varying lowp vec4 col;\n"
-        "void main() {\n"
-        "   gl_FragColor = col;\n"
-        "}\n";
 };
 
 #endif // TRIANGLEWINDOW_H

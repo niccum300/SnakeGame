@@ -1,36 +1,31 @@
 #include "trianglewindow.h"
 
 void TriangleWindow::initialize()
-{
+{ 
 
+    const qreal retinaScale = devicePixelRatio();
+    glViewport(0, 0, width() * retinaScale, height()* retinaScale);
+    gluPerspective(45, (width() / height()) * retinaScale, 0.1, 100.0);
+    glTranslatef(0.0, 0.0, -15.0);
 }
 
 void TriangleWindow::render()
 {
-    const qreal retinaScale = devicePixelRatio();
-    glViewport(0, 0, width() * retinaScale, height() * retinaScale);
 
     glClear(GL_COLOR_BUFFER_BIT);
-    static const GLfloat vertices[] = {
-        // first triangle
-         0.5f,  0.5f, 0.0f,  // top right
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f,  0.5f, 0.0f,  // top left
-        // second triangle
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f
-    };
+    const qreal retinaScale = devicePixelRatio();
+    glViewport(0, 0, width() * retinaScale, height()* retinaScale);
+
 
     unsigned int VBO;
     glGenBuffers(1, &VBO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), verticesPtr, GL_STATIC_DRAW);
 
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof (float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof (float), (void*)0);
 
     glEnableVertexAttribArray(0);
 

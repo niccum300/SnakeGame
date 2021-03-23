@@ -26,7 +26,7 @@ CONFIG += c++11
 
 LIBS += -lopengl32
 LIBS += -lglu32
-LIBS += -lglut32
+#LIBS += -lglut32
 
 SOURCES += \
         main.cpp \

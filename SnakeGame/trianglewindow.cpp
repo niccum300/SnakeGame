@@ -22,14 +22,14 @@ void TriangleWindow::render()
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), verticesPtr, GL_STATIC_DRAW);
-
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), verticesPtr, GL_STATIC_DRAW);   // contains all verticies
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof (float), (void*)0);
 
     glEnableVertexAttribArray(0);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glColor3f(0.0f, 1.0f, 0.0f);    // set color to green
+    glDrawArrays(GL_QUADS, 0, 4);   // draw verticies as rectangles (from 0 to 4)
 
     glDisableVertexAttribArray(0);
 

@@ -77,22 +77,22 @@ void MainWindow::DrawBounds(QPainter *painter)
 
 void MainWindow::GetControls()
 {
-    if(GetAsyncKeyState('A') < 0 && !(GetAsyncKeyState('D') < 0) && !(GetAsyncKeyState('W') < 0) && !(GetAsyncKeyState('S') < 0))
+    if(GetAsyncKeyState('A') < 0 && !(GetAsyncKeyState('D') < 0) && !(GetAsyncKeyState('W') < 0) && !(GetAsyncKeyState('S') < 0) && (snakeXSpeed != 1))
     {
         snakeXSpeed = -1;
         snakeYSpeed = 0;
     }
-    else if(!(GetAsyncKeyState('A') < 0) && GetAsyncKeyState('D') < 0 && !(GetAsyncKeyState('W') < 0) && !(GetAsyncKeyState('S') < 0))
+    else if(!(GetAsyncKeyState('A') < 0) && GetAsyncKeyState('D') < 0 && !(GetAsyncKeyState('W') < 0) && !(GetAsyncKeyState('S') < 0) && (snakeXSpeed != -1))
     {
         snakeXSpeed = 1;
         snakeYSpeed = 0;
     }
-    else if(!(GetAsyncKeyState('A') < 0) && !(GetAsyncKeyState('D') < 0) && GetAsyncKeyState('W') < 0 && !(GetAsyncKeyState('S') < 0))
+    else if(!(GetAsyncKeyState('A') < 0) && !(GetAsyncKeyState('D') < 0) && GetAsyncKeyState('W') < 0 && !(GetAsyncKeyState('S') < 0) && (snakeYSpeed != 1))
     {
         snakeYSpeed = -1;
         snakeXSpeed = 0;
     }
-    else if(!(GetAsyncKeyState('A') < 0) && !(GetAsyncKeyState('D') < 0) && !(GetAsyncKeyState('W') < 0) && GetAsyncKeyState('S') < 0)
+    else if(!(GetAsyncKeyState('A') < 0) && !(GetAsyncKeyState('D') < 0) && !(GetAsyncKeyState('W') < 0) && GetAsyncKeyState('S') < 0 && (snakeYSpeed != -1))
     {
         snakeYSpeed = 1;
         snakeXSpeed = 0;

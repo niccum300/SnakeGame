@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "mainwindow.h"
+#include "mainwindow2.h"
 
 namespace Ui {
 class MainMenu;
@@ -17,6 +18,7 @@ public:
     ~MainMenu();
 
     static MainWindow *game;
+    static MainWindow2 *game2;
 
 private slots:
 

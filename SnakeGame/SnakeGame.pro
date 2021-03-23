@@ -18,15 +18,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainmenu.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mainwindow2.cpp
 
 HEADERS += \
     mainmenu.h \
-    mainwindow.h
+    mainwindow.h \
+    mainwindow2.h
 
 FORMS += \
     mainmenu.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    mainwindow2.ui
 
 TRANSLATIONS += \
     SnakeGame_en_US.ts

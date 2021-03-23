@@ -35,8 +35,8 @@ public:
     int score = 0;
 
     //Initalize an array of zeros
-    int snakeX[6400] = {0};
-    int snakeY[6400] = {0};
+    int snakeX[3600] = {0};
+    int snakeY[3600] = {0};
 
     static int gameSpeed;
 

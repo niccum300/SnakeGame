@@ -72,7 +72,7 @@ void MainWindow::DrawBounds(QPainter *painter)
     painter->setBrush(Qt::BrushStyle::NoBrush);
     painter->setPen(pen);
 
-    painter->drawLine(0,60,800,60);
+    painter->drawLine(0,60,600,60);
 }
 
 void MainWindow::GetControls()
@@ -130,7 +130,7 @@ void MainWindow::MoveSnake()
     }
 
     //Check to make sure the head of the snake is within the bounds of the board
-    if(snakeX[0] < 0 || snakeX[0] > 79 || snakeY[0] < 0 || snakeY[0] > 79)
+    if(snakeX[0] < 0 || snakeX[0] > 59 || snakeY[0] < 0 || snakeY[0] > 59)
     {
         Died();
     }
@@ -158,14 +158,14 @@ void MainWindow::Reset()
     score = 0;
 
     //Clear out the arrays representing the snake's position
-    std::fill_n(snakeX,6400,0);
-    std::fill_n(snakeY,6400,0);
+    std::fill_n(snakeX,3600,0);
+    std::fill_n(snakeY,3600,0);
 
-    //Create the first piece of the snake
-    snakeX[0] = 40;
-    snakeY[0] = 40;
-    snakeX[1] = 39;
-    snakeY[1] = 40;
+    //Create the first pieces of the snake
+    snakeX[0] = 30;
+    snakeY[0] = 30;
+    snakeX[1] = 29;
+    snakeY[1] = 30;
 
     //Create the first piece of food
     CreateFood();
@@ -192,35 +192,22 @@ void MainWindow::Died()
     }
 }
 
+//Fix this Christopher--------------------------------------------------------------------------------------------------------------
 void MainWindow::CreateFood()
 {
-    bool foodXValid = false;
-    bool foodYValid = false;
+    bool foodValid = false;
 
-    while(!foodXValid)
+    while(!foodValid)
     {
-        foodX = QRandomGenerator::global()->bounded(1,79);
+        foodX = QRandomGenerator::global()->bounded(1,59);
+        foodY = QRandomGenerator::global()->bounded(1,59);
 
-        foodXValid = true;
+        foodValid = true;
         for(int i = 0; i < snakeLength; i++)
         {
-            if(foodX == snakeX[i])
+            if(foodX == snakeX[i] && foodY == snakeY[i])
             {
-                foodXValid = false;
-            }
-        }
-    }
-
-    while(!foodYValid)
-    {
-        foodY = QRandomGenerator::global()->bounded(1,79);
-
-        foodYValid = true;
-        for(int i = 0; i < snakeLength; i++)
-        {
-            if(foodY == snakeY[i])
-            {
-                foodYValid = false;
+                foodValid = false;
             }
         }
     }

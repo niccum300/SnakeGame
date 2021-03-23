@@ -25,6 +25,7 @@ private slots:
     void on_btn_easy_clicked();
 
     void on_btn_medium_clicked();
+
     void on_btn_hard_clicked();
 
 private:

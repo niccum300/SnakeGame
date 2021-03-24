@@ -24,11 +24,16 @@ private:
     GLint m_colAttr = 0;
     GLint m_matrixUniform = 0;
 
-    GLfloat vertices[12] = {
-        2.0f, 0.0f, 0.0f,  // bottom right
-        0.0f, 0.0f, 0.0f,   // bottom left
-        0.0f, 2.0f, 0.0f,    // top left
-        2.0f, 2.0f, 0.0f    // top right
+    GLfloat vertices[24] = {
+        1.5f, 0.0f, 0.0f,  // bottom right
+        0.5f, 0.0f, 0.0f,   // bottom left
+        0.5f, 1.0f, 0.0f,    // top left
+        1.5f, 1.0f, 0.0f,    // top right
+
+        -1.5f, 0.0f, 0.0f,  // bottom right
+        -0.5f, 0.0f, 0.0f,   // bottom left
+        -0.5f, 1.0f, 0.0f,    // top left
+        -1.5f, 1.0f, 0.0f,    // top right
     };
 
     GLfloat *verticesPtr = vertices;

@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     TriangleWindow mywindow;
     mywindow.setFormat(format);
-    mywindow.resize(640, 480);
+    mywindow.resize(1920, 1080);
     mywindow.show();
 
     mywindow.setAnimating(true);

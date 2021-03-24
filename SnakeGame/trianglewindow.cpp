@@ -4,9 +4,16 @@ void TriangleWindow::initialize()
 { 
 
     const qreal retinaScale = devicePixelRatio();
-    glViewport(0, 0, width() * retinaScale, height()* retinaScale);
+    glViewport(0, 0, width() * retinaScale, height()* retinaScale); // reset viewport
+
+
+
     gluPerspective(45, (width() / height()) * retinaScale, 0.1, 100.0);
     glTranslatef(0.0, 0.0, -15.0);
+
+
+
+
 }
 
 void TriangleWindow::render()
@@ -22,14 +29,14 @@ void TriangleWindow::render()
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), verticesPtr, GL_STATIC_DRAW);   // contains all verticies
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), verticesPtr, GL_DYNAMIC_DRAW);   // contains all verticies
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof (float), (void*)0);
 
     glEnableVertexAttribArray(0);
 
     glColor3f(0.0f, 1.0f, 0.0f);    // set color to green
-    glDrawArrays(GL_QUADS, 0, 4);   // draw verticies as rectangles (from 0 to 4)
+    glDrawArrays(GL_QUADS, 0, 8);   // draw verticies as rectangles (from 0 to 4)
 
     glDisableVertexAttribArray(0);
 
@@ -60,15 +67,35 @@ void TriangleWindow::keyPressEvent(QKeyEvent *event)
         std::cout << "D got pressed" << std::endl;
         break;
     case Qt::Key_Up:
+        vertices[1] += 0.1f;
+        vertices[4] += 0.1f;
+        vertices[7] += 0.1f;
+        vertices[10] += 0.1f;
        std::cout << "Up got pressed" << std::endl;
+
         break;
     case Qt::Key_Down:
+        vertices[1] -= 0.1f;
+        vertices[4] -= 0.1f;
+        vertices[7] -= 0.1f;
+        vertices[10] -= 0.1f;
+
        std::cout << "Down got pressed" << std::endl;
         break;
     case Qt::Key_Left:
+        vertices[0] -= 0.1f;
+        vertices[3] -= 0.1f;
+        vertices[6] -= 0.1f;
+        vertices[9] -= 0.1f;
+
         std::cout << "Left got pressed" << std::endl;
         break;
     case Qt::Key_Right:
+        vertices[0] += 0.1f;
+        vertices[3] += 0.1f;
+        vertices[6] += 0.1f;
+        vertices[9] += 0.1f;
+
         std::cout << "Right got pressed" << std::endl;
         break;
     case Qt::Key_1:

@@ -1,20 +1,20 @@
-#include <QGuiApplication>
-#include <QSurfaceFormat>
-#include "trianglewindow.h"
+#include "main.h"
+#include "game.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication a(argc, argv);
 
-    QSurfaceFormat format;
-    format.setSamples(16);
+    Game snake_game;
+    std::cout<<"Creating Windows..."<<std::endl;
+    snake_game.createWindow(0, 1920, 1080);
 
-    TriangleWindow mywindow;
-    mywindow.setFormat(format);
-    mywindow.resize(1920, 1080);
-    mywindow.show();
+    std::cout<<"Populating Map..."<<std::endl;
+    snake_game.populateMap(1.0f, 1.0f, 10, 10);
 
-    mywindow.setAnimating(true);
+    std::cout<<"Running Game..."<<std::endl;
+    snake_game.run();
+
 
     return a.exec();
 }

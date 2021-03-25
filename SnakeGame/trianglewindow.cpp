@@ -10,10 +10,6 @@ void TriangleWindow::initialize()
 
     gluPerspective(45, (width() / height()) * retinaScale, 0.1, 100.0);
     glTranslatef(0.0, 0.0, -15.0);
-
-
-
-
 }
 
 void TriangleWindow::render()
@@ -29,19 +25,28 @@ void TriangleWindow::render()
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), verticesPtr, GL_DYNAMIC_DRAW);   // contains all verticies
+    if(vertexSize != 0)
+    {
+        glBufferData(GL_ARRAY_BUFFER, sizeof(*verticesPtr) * vertexSize, verticesPtr, GL_STATIC_DRAW);   // contains all verticies
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof (float), (void*)0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof (float), (void*)0);
 
-    glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(0);
 
-    glColor3f(0.0f, 1.0f, 0.0f);    // set color to green
-    glDrawArrays(GL_QUADS, 0, 8);   // draw verticies as rectangles (from 0 to 4)
+        glColor3f(0.0f, 1.0f, 0.0f);    // set color to green
+        glDrawArrays(GL_QUADS, 0, vertexSize);   // draw verticies as rectangles (from 0 to 4)
+    }
 
     glDisableVertexAttribArray(0);
 
 
     ++m_frame;
+}
+
+void TriangleWindow::setVerticies(float *vertices, uint arraySize)
+{
+    verticesPtr = vertices;
+    vertexSize = arraySize;
 }
 
 void TriangleWindow::keyPressEvent(QKeyEvent *event)

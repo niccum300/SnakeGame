@@ -1,11 +1,7 @@
 #ifndef OPENGLWINDOW_H
 #define OPENGLWINDOW_H
 
-#include <QWindow>
-#include <QPainter>
-#include <QOpenGLFunctions>
-#include <QOpenGLPaintDevice>
-#include <QScreen>
+#include "main.h"
 
 class OpenGLWindow : public QWindow, protected QOpenGLFunctions
 {

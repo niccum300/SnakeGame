@@ -29,11 +29,16 @@ LIBS += -lglu32
 #LIBS += -lglut32
 
 SOURCES += \
+    game.cpp \
         main.cpp \
+    map.cpp \
     openglwindow.cpp \
     trianglewindow.cpp
 
 HEADERS += \
+    game.h \
+    main.h \
+    map.h \
     openglwindow.h \
     trianglewindow.h
 

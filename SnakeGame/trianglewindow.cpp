@@ -9,7 +9,7 @@ void TriangleWindow::initialize()
 
 
     gluPerspective(45, (width() / height()) * retinaScale, 0.1, 100.0);
-    glTranslatef(0.0, 0.0, -15.0);
+    glTranslatef(-5.0, -5.0, -15.0);
 }
 
 void TriangleWindow::render()

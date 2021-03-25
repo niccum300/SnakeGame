@@ -12,6 +12,9 @@ int main(int argc, char *argv[])
     std::cout<<"Populating Map..."<<std::endl;
     snake_game.populateMap(1.0f, 1.0f, 10, 10);
 
+    std::cout<<"Binding Map with Windows..."<<std::endl;
+    snake_game.bindMapWindow(0);
+
     std::cout<<"Running Game..."<<std::endl;
     snake_game.run();
 

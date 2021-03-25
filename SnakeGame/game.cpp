@@ -11,7 +11,6 @@ Game::Game()
 void Game::run()
 {
     initWindows();
-    currentWindows[0]->setVerticies(gameMap.getVertices(), gameMap.getVerticeSize());
 }
 
 void Game::createWindow(int windowID, int windowWidth, int windowHeight)
@@ -56,4 +55,9 @@ void Game::populateMap(float tileWidth, float tileHeight, int mapWidth, int mapH
     gameMap.setTileSize(tileWidth, tileHeight);
     gameMap.createTiles();
     gameMap.createVertices();
+}
+
+void Game::bindMapWindow(int windowID)
+{
+    currentWindows[windowID]->setVerticies(gameMap.getVertices(), gameMap.getVerticeSize());
 }

@@ -2,11 +2,8 @@
 
 void TriangleWindow::initialize()
 { 
-
     const qreal retinaScale = devicePixelRatio();
     glViewport(0, 0, width() * retinaScale, height()* retinaScale); // reset viewport
-
-
 
     gluPerspective(45, (width() / height()) * retinaScale, 0.1, 100.0);
     glTranslatef(-5.0, -5.0, -15.0);
@@ -18,7 +15,6 @@ void TriangleWindow::render()
     glClear(GL_COLOR_BUFFER_BIT);
     const qreal retinaScale = devicePixelRatio();
     glViewport(0, 0, width() * retinaScale, height()* retinaScale);
-
 
     unsigned int VBO;
     glGenBuffers(1, &VBO);
@@ -38,7 +34,6 @@ void TriangleWindow::render()
     }
 
     glDisableVertexAttribArray(0);
-
 
     ++m_frame;
 }

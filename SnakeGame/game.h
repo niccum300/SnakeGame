@@ -15,6 +15,7 @@ public:
     Game();
     void createWindow(int windowID, int windowWidth, int windowHeight);
     void populateMap(float tileWidth, float tileHeight, int mapWidth, int mapHeight);
+    void bindMapWindow(int windowID);
     void run();
 
 private:

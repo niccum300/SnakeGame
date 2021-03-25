@@ -43,6 +43,26 @@ void MainWindow2::paintEvent(QPaintEvent *event)
     }
 }
 
+void MainWindow2::SetPlayerNames(QString p1, QString p2)
+{
+    if (p1 == "")
+    {
+        p1 = "Player 1";
+    }
+
+    if (p2 == "")
+    {
+        p2 = "Player 2";
+    }
+
+
+    ui->label_p1->setText(p1);
+    ui->label_p2->setText(p2);
+
+    player_1 = p1;
+    player_2 = p2;
+}
+
 void MainWindow2::DrawSnake1(QPainter *painter, int x, int y)
 {
     QBrush brush;
@@ -316,7 +336,7 @@ void MainWindow2::Died1()
         timer->stop();
         controlTimer->stop();
 
-        QMessageBox::information(0, QString("Player 2 Wins"), QString("Player 1 has died, so Player 2 wins!!"), QMessageBox::Ok);
+        QMessageBox::information(0, QString(player_2 + " Wins"), QString(player_1 + " has died, so " + player_2 + " 2 wins!!"), QMessageBox::Ok);
 
         menu->show();
         this->hide();
@@ -331,7 +351,7 @@ void MainWindow2::Died2()
         timer->stop();
         controlTimer->stop();
 
-        QMessageBox::information(0, QString("Player 1 Wins"), QString("Player 2 has died, so Player 1 wins!!"), QMessageBox::Ok);
+        QMessageBox::information(0, QString(player_1 + " Wins"), QString(player_2 + " has died, so " + player_1 + " 2 wins!!"), QMessageBox::Ok);
 
         menu->show();
         this->hide();

@@ -62,6 +62,7 @@ public:
     void Died2();
     void CreateFood();
     void GetControls();
+    void SetPlayerNames(QString p1, QString p2);
 
     QTimer *timer = new QTimer(this);
     QTimer *controlTimer = new QTimer(this);
@@ -71,5 +72,8 @@ private slots:
 
 private:
     Ui::MainWindow2 *ui;
+
+    QString player_1;
+    QString player_2;
 };
 #endif // MAINWINDOW_H

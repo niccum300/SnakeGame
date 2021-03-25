@@ -31,16 +31,19 @@ void MainMenu::on_btn_easy_clicked()
     if(multiplayer)
     {
         game2->gameSpeed = 100;
+        game2->SetPlayerNames(ui->txt_box_1->text(), ui->txt_box_p2->text());
         game2->Reset();
         game2->show();
     }
     else
     {
         game->gameSpeed = 100;
+        game->SetPlayerName(ui->txt_box_1->text());
         game->Reset();
         game->show();
     }
 
+    reset_menu();
     this->hide();
 }
 
@@ -50,16 +53,19 @@ void MainMenu::on_btn_medium_clicked()
     if(multiplayer)
     {
         game2->gameSpeed = 50;
+        game2->SetPlayerNames(ui->txt_box_1->text(), ui->txt_box_p2->text());
         game2->Reset();
         game2->show();
     }
     else
     {
         game->gameSpeed = 50;
+        game->SetPlayerName(ui->txt_box_1->text());
         game->Reset();
         game->show();
     }
 
+    reset_menu();
     this->hide();
 }
 
@@ -69,18 +75,33 @@ void MainMenu::on_btn_hard_clicked()
     if(multiplayer)
     {
         game2->gameSpeed = 25;
+        game2->SetPlayerNames(ui->txt_box_1->text(), ui->txt_box_p2->text());
         game2->Reset();
         game2->show();
     }
     else
     {
         game->gameSpeed = 25;
+        game->SetPlayerName(ui->txt_box_1->text());
         game->Reset();
         game->show();
     }
 
+    reset_menu();
     this->hide();
 }
+
+void MainMenu::reset_menu()
+{
+    ui->txt_box_1->clear();
+
+    ui->txt_box_p2->clear();
+    ui->player_2_label_2->hide();
+    ui->txt_box_p2->hide();
+
+    ui->rad_multiplayer->setChecked(false);
+}
+
 
 void MainMenu::on_rad_multiplayer_clicked()
 {

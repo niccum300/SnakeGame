@@ -20,6 +20,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::SetPlayerName(QString p1)
+{
+    if (p1 == "")
+    {
+        p1 = "Player 1";
+    }
+
+    ui->label->setText(p1);
+
+    player_1 = p1;
+}
+
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     if(active)

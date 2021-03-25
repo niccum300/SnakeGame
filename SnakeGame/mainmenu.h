@@ -30,6 +30,8 @@ private slots:
 
     void on_btn_hard_clicked();
 
+    void on_rad_multiplayer_clicked();
+
 private:
     Ui::MainMenu *ui;
 };

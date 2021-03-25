@@ -11,6 +11,8 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
+    ui->player_2_label_2->hide();
+    ui->txt_box_p2->hide();
 }
 
 MainMenu::~MainMenu()
@@ -78,4 +80,18 @@ void MainMenu::on_btn_hard_clicked()
     }
 
     this->hide();
+}
+
+void MainMenu::on_rad_multiplayer_clicked()
+{
+    if (ui->rad_multiplayer->isChecked())
+    {
+        ui->txt_box_p2->show();
+        ui->player_2_label_2->show();
+
+    }else if(!ui->rad_multiplayer->isChecked())
+    {
+        ui->txt_box_p2->hide();
+        ui->player_2_label_2->hide();
+    }
 }

@@ -2,18 +2,22 @@
 
 void TriangleWindow::initialize()
 { 
+    m_program = new QOpenGLShaderProgram();
 
-    const qreal retinaScale = devicePixelRatio();
-    glViewport(0, 0, width() * retinaScale, height()* retinaScale); // reset viewport
+    if (!m_program->addShaderFromSourceFile(
+        QOpenGLShader::Vertex, ":/shaders/pass_through.vert"))
+    {
+        qDebug() << "Vertex shader errors :\n" << m_program->log();
+    }
 
+    if (!m_program->addShaderFromSourceFile(
+        QOpenGLShader::Fragment, ":/shaders/uniform_color.frag"))
+    {
+        qDebug() << "Fragment shader errors :\n" << m_program->log();
+    }
 
-
-    gluPerspective(45, (width() / height()) * retinaScale, 0.1, 100.0);
-    glTranslatef(0.0, 0.0, -15.0);
-
-
-
-
+    if (!m_program->link())
+        qDebug() << "Shader linker errors :\n" << m_program->log();
 }
 
 void TriangleWindow::render()
@@ -35,7 +39,7 @@ void TriangleWindow::render()
 
     glEnableVertexAttribArray(0);
 
-    glColor3f(0.0f, 1.0f, 0.0f);    // set color to green
+    //glColor3f(0.0f, 1.0f, 0.0f);    // set color to green
     glDrawArrays(GL_QUADS, 0, 8);   // draw verticies as rectangles (from 0 to 4)
 
     glDisableVertexAttribArray(0);

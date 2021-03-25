@@ -3,6 +3,8 @@
 
 #include "openglwindow.h"
 #include <QOpenGLShaderProgram>
+#include <QOpenGLVertexArrayObject>
+#include <QOpenGLBuffer>
 #include <QKeyEvent>
 #include <iostream>
 #include <GL/glu.h>
@@ -37,6 +39,10 @@ private:
     };
 
     GLfloat *verticesPtr = vertices;
+
+    QOpenGLVertexArrayObject m_vao;
+
+    QOpenGLBuffer m_vertexBufferObject;
 
     QOpenGLShaderProgram *m_program = nullptr;
     int m_frame = 0;

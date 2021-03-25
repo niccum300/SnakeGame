@@ -27,14 +27,14 @@ void TriangleWindow::render()
 
     if(vertexSize != 0)
     {
-        glBufferData(GL_ARRAY_BUFFER, sizeof(*verticesPtr) * vertexSize, verticesPtr, GL_STATIC_DRAW);   // contains all verticies
+        glBufferData(GL_ARRAY_BUFFER, sizeof(*verticesPtr) * vertexSize, verticesPtr, GL_STATIC_DRAW);   // draws vertices
 
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof (float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof (float), (void*)0); // Using x, y, z
 
         glEnableVertexAttribArray(0);
 
         glColor3f(0.0f, 1.0f, 0.0f);    // set color to green
-        glDrawArrays(GL_QUADS, 0, vertexSize);   // draw verticies as rectangles (from 0 to 4)
+        glDrawArrays(GL_QUADS, 0, vertexSize);   // draw vertices as rectangles
     }
 
     glDisableVertexAttribArray(0);
@@ -71,35 +71,35 @@ void TriangleWindow::keyPressEvent(QKeyEvent *event)
         glTranslatef(0.1, 0.0, 0.0);
         std::cout << "D got pressed" << std::endl;
         break;
-    case Qt::Key_Up:
-        vertices[1] += 0.1f;
-        vertices[4] += 0.1f;
-        vertices[7] += 0.1f;
-        vertices[10] += 0.1f;
-       std::cout << "Up got pressed" << std::endl;
+//    case Qt::Key_Up:
+//        vertices[1] += 0.1f;
+//        vertices[4] += 0.1f;
+//        vertices[7] += 0.1f;
+//        vertices[10] += 0.1f;
+//       std::cout << "Up got pressed" << std::endl;
 
-        break;
-    case Qt::Key_Down:
-        vertices[1] -= 0.1f;
-        vertices[4] -= 0.1f;
-        vertices[7] -= 0.1f;
-        vertices[10] -= 0.1f;
+//        break;
+//    case Qt::Key_Down:
+//        vertices[1] -= 0.1f;
+//        vertices[4] -= 0.1f;
+//        vertices[7] -= 0.1f;
+//        vertices[10] -= 0.1f;
 
-       std::cout << "Down got pressed" << std::endl;
-        break;
-    case Qt::Key_Left:
-        vertices[0] -= 0.1f;
-        vertices[3] -= 0.1f;
-        vertices[6] -= 0.1f;
-        vertices[9] -= 0.1f;
+//       std::cout << "Down got pressed" << std::endl;
+//        break;
+//    case Qt::Key_Left:
+//        vertices[0] -= 0.1f;
+//        vertices[3] -= 0.1f;
+//        vertices[6] -= 0.1f;
+//        vertices[9] -= 0.1f;
 
-        std::cout << "Left got pressed" << std::endl;
-        break;
-    case Qt::Key_Right:
-        vertices[0] += 0.1f;
-        vertices[3] += 0.1f;
-        vertices[6] += 0.1f;
-        vertices[9] += 0.1f;
+//        std::cout << "Left got pressed" << std::endl;
+//        break;
+//    case Qt::Key_Right:
+//        vertices[0] += 0.1f;
+//        vertices[3] += 0.1f;
+//        vertices[6] += 0.1f;
+//        vertices[9] += 0.1f;
 
         std::cout << "Right got pressed" << std::endl;
         break;

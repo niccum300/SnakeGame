@@ -24,6 +24,7 @@
 struct Tile {
     float x = 0;
     float y = 0;
+    float z = 0;
     float width = 0;
     float height = 0;
     float color[3] = {0, 1.0f, 0};

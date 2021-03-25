@@ -43,7 +43,7 @@ void Game::initWindows()
     {
         if (currentWindows[i] != nullptr)
         {
-            std::cout<<"Window "<<i<<std::endl;
+            std::cout<<"Running Window "<<i<<"..."<<std::endl;
             currentWindows[i]->show();
             currentWindows[i]->setAnimating(true);
         }

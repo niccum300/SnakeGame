@@ -19,24 +19,45 @@ void Map::createTiles()
             index++;
         }
     }
-    vertices = new float[(sizeMap[0] * sizeMap[1] * 8)];
+    vertices = new float[(sizeMap[0] * sizeMap[1] * VERTEX_COUNT)];
 }
 
 void Map::createVertices()
 {
-    for(int i = 0; i < sizeMap[0] * sizeMap[1] * 8; i+=8)
+    for(int i = 0; i < sizeMap[0] * sizeMap[1] * VERTEX_COUNT; i+=VERTEX_COUNT)
     {
-        vertices[i] = map[i/8].x + map[i/8].width;
-        vertices[i+1] = map[i/8].y;
+        if(VERTEX_COUNT == 8)
+        {
+            vertices[i] = map[i/VERTEX_COUNT].x + map[i/VERTEX_COUNT].width;
+            vertices[i+1] = map[i/VERTEX_COUNT].y;
 
-        vertices[i+2] = map[i/8].x;
-        vertices[i+3] = map[i/8].y;
+            vertices[i+2] = map[i/VERTEX_COUNT].x;
+            vertices[i+3] = map[i/VERTEX_COUNT].y;
 
-        vertices[i+4] = map[i/8].x;
-        vertices[i+5] = map[i/8].y + map[i/8].height;
+            vertices[i+4] = map[i/VERTEX_COUNT].x;
+            vertices[i+5] = map[i/VERTEX_COUNT].y + map[i/VERTEX_COUNT].height;
 
-        vertices[i+6] = map[i/8].x + map[i/8].width;
-        vertices[i+7] = map[i/8].y + map[i/8].height;
+            vertices[i+6] = map[i/VERTEX_COUNT].x + map[i/VERTEX_COUNT].width;
+            vertices[i+7] = map[i/VERTEX_COUNT].y + map[i/VERTEX_COUNT].height;
+        }
+        else if(VERTEX_COUNT == 12)
+        {
+            vertices[i] = map[i/VERTEX_COUNT].x + map[i/VERTEX_COUNT].width;
+            vertices[i+1] = map[i/VERTEX_COUNT].y;
+            vertices[i+2] = map[i/VERTEX_COUNT].z;
+
+            vertices[i+3] = map[i/VERTEX_COUNT].x;
+            vertices[i+4] = map[i/VERTEX_COUNT].y;
+            vertices[i+5] = map[i/VERTEX_COUNT].z;
+
+            vertices[i+6] = map[i/VERTEX_COUNT].x;
+            vertices[i+7] = map[i/VERTEX_COUNT].y + map[i/VERTEX_COUNT].height;
+            vertices[i+8] = map[i/VERTEX_COUNT].z;
+
+            vertices[i+9] = map[i/VERTEX_COUNT].x + map[i/VERTEX_COUNT].width;
+            vertices[i+10] = map[i/VERTEX_COUNT].y + map[i/VERTEX_COUNT].height;
+            vertices[i+11] = map[i/VERTEX_COUNT].z;
+        }
     }
 }
 
@@ -57,7 +78,7 @@ float *Map::getVertices()
 
 uint Map::getVerticeSize()
 {
-    return (sizeMap[0] * sizeMap[1] * 8);
+    return (sizeMap[0] * sizeMap[1] * VERTEX_COUNT);
 }
 
 void Map::setMapSize(int mapWidth, int mapHeight)

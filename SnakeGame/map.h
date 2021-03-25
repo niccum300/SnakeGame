@@ -3,6 +3,7 @@
 
 #include "main.h"
 
+const int VERTEX_COUNT = 12;
 
 class Map
 {

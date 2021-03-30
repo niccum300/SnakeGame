@@ -129,7 +129,7 @@
    <widget class="QPushButton" name="btn_quit">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>150</x>
       <y>490</y>
       <width>91</width>
       <height>25</height>
@@ -179,9 +179,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>250</y>
+      <y>240</y>
       <width>211</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -226,6 +226,19 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="help_btn">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>490</y>
+      <width>91</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Help</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -233,7 +246,7 @@
      <x>0</x>
      <y>0</y>
      <width>250</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

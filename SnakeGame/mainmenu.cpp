@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "mainwindow2.h"
 #include "ui_mainmenu.h"
+#include "help.h"
 
 MainWindow *MainMenu::game;
 MainWindow2 *MainMenu::game2;
@@ -100,6 +101,8 @@ void MainMenu::reset_menu()
     ui->txt_box_p2->hide();
 
     ui->rad_multiplayer->setChecked(false);
+
+    helpMenu->close();
 }
 
 
@@ -115,4 +118,9 @@ void MainMenu::on_rad_multiplayer_clicked()
         ui->txt_box_p2->hide();
         ui->player_2_label_2->hide();
     }
+}
+
+void MainMenu::on_help_btn_clicked()
+{
+    helpMenu->show();
 }

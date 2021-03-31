@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <QTimer>
 #include <QMessageBox>
+#include <QtMultimedia/QSoundEffect>
 
 class MainMenu;
 
@@ -48,6 +49,7 @@ public:
     void Died();
     void CreateFood();
     void GetControls();
+    void SetSounds(std::string);
     void SetPlayerName(QString p1);
 
     QTimer *timer = new QTimer(this);
@@ -59,6 +61,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    QSoundEffect eat;
+    QSoundEffect music;
     QString player_1;
 };
 #endif // MAINWINDOW_H

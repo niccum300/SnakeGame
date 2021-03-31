@@ -2,6 +2,7 @@
 #define MAINMENU_H
 
 #include <QMainWindow>
+#include <QtMultimedia/QSoundEffect>
 #include "mainwindow.h"
 #include "mainwindow2.h"
 
@@ -19,6 +20,7 @@ public:
 
     static MainWindow *game;
     static MainWindow2 *game2;
+    QSoundEffect menu;
 
 private slots:
 
@@ -36,7 +38,7 @@ private slots:
 private:
     Ui::MainMenu *ui;
 
-    void set_players();
+    void SetSounds();
     void reset_menu();
 };
 

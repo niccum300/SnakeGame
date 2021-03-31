@@ -20,6 +20,31 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::SetSounds(std::string mode)
+{
+    eat.setSource(QUrl::fromLocalFile(":/eat.wav"));
+    eat.setLoopCount(1);
+
+    if(mode == "slug")
+    {
+        music.setSource(QUrl::fromLocalFile(":/fluidvolt-The_Gusts_of_Aeolus.wav"));
+        music.setLoopCount(QSoundEffect::Infinite);
+        music.setVolume(0.25f);
+    }
+    else if(mode == "worm")
+    {
+        music.setSource(QUrl::fromLocalFile(":/Necrophageon-Neon_Starlight.wav"));
+        music.setLoopCount(QSoundEffect::Infinite);
+        music.setVolume(0.25f);
+    }
+    else if(mode == "python")
+    {
+        music.setSource(QUrl::fromLocalFile(":/Kulor-SpaceDolphinsSpaceCave.wav"));
+        music.setLoopCount(QSoundEffect::Infinite);
+        music.setVolume(0.25f);
+    }
+}
+
 void MainWindow::SetPlayerName(QString p1)
 {
     if (p1 == "")
@@ -150,6 +175,7 @@ void MainWindow::MoveSnake()
     //If our head ovelaps the food eat it and make a new food
     if(snakeX[0] == foodX && snakeY[0] == foodY)
     {
+        eat.play();
         snakeX[snakeLength] = snakeX[snakeLength - 1] + (-1 * snakeXSpeed);
         snakeY[snakeLength] = snakeY[snakeLength - 1] + (-1 * snakeYSpeed);
         snakeLength += 1;
@@ -186,6 +212,8 @@ void MainWindow::Reset()
     timer->start(gameSpeed);
     controlTimer->start(5);
 
+    music.play();
+
     active = true;
 }
 
@@ -199,7 +227,9 @@ void MainWindow::Died()
 
         QMessageBox::information(0, QString("You Lose"), QString("You Died!!!"), QMessageBox::Ok);
 
+        music.stop();
         menu->show();
+        menu->menu.play();
         this->hide();
     }
 }
@@ -230,6 +260,8 @@ void MainWindow::on_btn_exit_clicked()
     active = false;
     timer->stop();
     controlTimer->stop();
+    music.stop();
     menu->show();
+    menu->menu.play();
     this->hide();
 }

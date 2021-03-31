@@ -13,11 +13,20 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->setupUi(this);
     ui->player_2_label_2->hide();
     ui->txt_box_p2->hide();
+    SetSounds();
 }
 
 MainMenu::~MainMenu()
 {
     delete ui;
+}
+
+void MainMenu::SetSounds()
+{
+    menu.setSource(QUrl::fromLocalFile(":/tadpole-Belle.wav"));
+    menu.setLoopCount(QSoundEffect::Infinite);
+    menu.setVolume(0.25f);
+    menu.play();
 }
 
 void MainMenu::on_btn_quit_clicked()
@@ -32,6 +41,7 @@ void MainMenu::on_btn_easy_clicked()
     {
         game2->gameSpeed = 100;
         game2->SetPlayerNames(ui->txt_box_1->text(), ui->txt_box_p2->text());
+        game2->SetSounds("slug");
         game2->Reset();
         game2->show();
     }
@@ -39,6 +49,7 @@ void MainMenu::on_btn_easy_clicked()
     {
         game->gameSpeed = 100;
         game->SetPlayerName(ui->txt_box_1->text());
+        game->SetSounds("slug");
         game->Reset();
         game->show();
     }
@@ -54,6 +65,7 @@ void MainMenu::on_btn_medium_clicked()
     {
         game2->gameSpeed = 50;
         game2->SetPlayerNames(ui->txt_box_1->text(), ui->txt_box_p2->text());
+        game2->SetSounds("worm");
         game2->Reset();
         game2->show();
     }
@@ -61,6 +73,7 @@ void MainMenu::on_btn_medium_clicked()
     {
         game->gameSpeed = 50;
         game->SetPlayerName(ui->txt_box_1->text());
+        game->SetSounds("worm");
         game->Reset();
         game->show();
     }
@@ -76,6 +89,7 @@ void MainMenu::on_btn_hard_clicked()
     {
         game2->gameSpeed = 25;
         game2->SetPlayerNames(ui->txt_box_1->text(), ui->txt_box_p2->text());
+        game2->SetSounds("python");
         game2->Reset();
         game2->show();
     }
@@ -83,6 +97,7 @@ void MainMenu::on_btn_hard_clicked()
     {
         game->gameSpeed = 25;
         game->SetPlayerName(ui->txt_box_1->text());
+        game->SetSounds("python");
         game->Reset();
         game->show();
     }
@@ -100,6 +115,7 @@ void MainMenu::reset_menu()
     ui->txt_box_p2->hide();
 
     ui->rad_multiplayer->setChecked(false);
+    menu.stop();
 }
 
 

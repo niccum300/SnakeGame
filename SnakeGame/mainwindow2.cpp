@@ -21,6 +21,31 @@ MainWindow2::~MainWindow2()
     delete ui;
 }
 
+void MainWindow2::SetSounds(std::string mode)
+{
+    eat.setSource(QUrl::fromLocalFile(":/eat.wav"));
+    eat.setLoopCount(1);
+
+    if(mode == "slug")
+    {
+        music.setSource(QUrl::fromLocalFile(":/fluidvolt-The_Gusts_of_Aeolus.wav"));
+        music.setLoopCount(QSoundEffect::Infinite);
+        music.setVolume(0.25f);
+    }
+    else if(mode == "worm")
+    {
+        music.setSource(QUrl::fromLocalFile(":/Necrophageon-Neon_Starlight.wav"));
+        music.setLoopCount(QSoundEffect::Infinite);
+        music.setVolume(0.25f);
+    }
+    else if(mode == "python")
+    {
+        music.setSource(QUrl::fromLocalFile(":/Kulor-SpaceDolphinsSpaceCave.wav"));
+        music.setLoopCount(QSoundEffect::Infinite);
+        music.setVolume(0.25f);
+    }
+}
+
 void MainWindow2::paintEvent(QPaintEvent *event)
 {
     if(active)
@@ -210,6 +235,7 @@ void MainWindow2::MoveSnake1()
     //If our head ovelaps the food eat it and make a new food
     if(snakeX1[0] == foodX && snakeY1[0] == foodY)
     {
+        eat.play();
         snakeX1[snake1Length] = snakeX1[snake1Length - 1] + (-1 * snakeX1Speed);
         snakeY1[snake1Length] = snakeY1[snake1Length - 1] + (-1 * snakeY1Speed);
         snake1Length += 1;
@@ -269,6 +295,7 @@ void MainWindow2::MoveSnake2()
     //If our head ovelaps the food eat it and make a new food
     if(snakeX2[0] == foodX && snakeY2[0] == foodY)
     {
+        eat.play();
         snakeX2[snake2Length] = snakeX2[snake2Length - 1] + (-1 * snakeX2Speed);
         snakeY2[snake2Length] = snakeY2[snake2Length - 1] + (-1 * snakeY2Speed);
         snake2Length += 1;
@@ -325,6 +352,8 @@ void MainWindow2::Reset()
     timer->start(gameSpeed);
     controlTimer->start(5);
 
+    music.play();
+
     active = true;
 }
 
@@ -338,7 +367,9 @@ void MainWindow2::Died1()
 
         QMessageBox::information(0, QString(player_2 + " Wins"), QString(player_1 + " has died, so " + player_2 + " 2 wins!!"), QMessageBox::Ok);
 
+        music.stop();
         menu->show();
+        menu->menu.play();
         this->hide();
     }
 }
@@ -353,7 +384,9 @@ void MainWindow2::Died2()
 
         QMessageBox::information(0, QString(player_1 + " Wins"), QString(player_2 + " has died, so " + player_1 + " 2 wins!!"), QMessageBox::Ok);
 
+        music.stop();
         menu->show();
+        menu->menu.play();
         this->hide();
     }
 }
@@ -392,5 +425,6 @@ void MainWindow2::on_btn_exit_clicked()
     timer->stop();
     controlTimer->stop();
     menu->show();
+    menu->menu.play();
     this->hide();
 }

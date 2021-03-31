@@ -5,7 +5,7 @@
 #include <QtMultimedia/QSoundEffect>
 #include "mainwindow.h"
 #include "mainwindow2.h"
-
+#include "help.h"
 namespace Ui {
 class MainMenu;
 }
@@ -21,6 +21,7 @@ public:
     static MainWindow *game;
     static MainWindow2 *game2;
     QSoundEffect menu;
+    help *helpMenu;
 
 private slots:
 
@@ -34,6 +35,8 @@ private slots:
 
 
     void on_rad_multiplayer_clicked();
+
+    void on_help_btn_clicked();
 
 private:
     Ui::MainMenu *ui;

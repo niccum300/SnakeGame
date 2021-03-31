@@ -52,7 +52,7 @@ void MainWindow::SetPlayerName(QString p1)
         p1 = "Player 1";
     }
 
-    ui->label->setText(p1);
+    ui->player_label->setText(p1);
 
     player_1 = p1;
 }

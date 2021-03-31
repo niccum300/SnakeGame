@@ -12,8 +12,3 @@ help::~help()
 {
     delete ui;
 }
-
-void help::on_exit_btn_clicked()
-{
-    this->close();
-}

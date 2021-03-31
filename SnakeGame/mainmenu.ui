@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>250</width>
-    <height>560</height>
+    <height>650</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>250</width>
-    <height>410</height>
+    <height>650</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>250</width>
-    <height>560</height>
+    <height>650</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -116,11 +116,17 @@
       <x>30</x>
       <y>430</y>
       <width>191</width>
-      <height>51</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Brayton Niccum&lt;br&gt;Michael Swango&lt;br&gt;Christopher Feguson&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;Credits &lt;br/&gt;Brayton Niccum Developer&lt;br/&gt;Michael Swango Developer&lt;br/&gt;Christopher Feguson Developer&lt;/p&gt;
+&lt;p &gt;fluidvolt Audio &lt;br/&gt;Kulor Audio &lt;br/&gt;Necrophageon Audio&lt;br/&gt;tadpole Audio&lt;br/&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -129,8 +135,8 @@
    <widget class="QPushButton" name="btn_quit">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>490</y>
+      <x>140</x>
+      <y>580</y>
       <width>91</width>
       <height>25</height>
      </rect>
@@ -230,7 +236,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>490</y>
+      <y>580</y>
       <width>91</width>
       <height>25</height>
      </rect>
@@ -246,7 +252,7 @@
      <x>0</x>
      <y>0</y>
      <width>250</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

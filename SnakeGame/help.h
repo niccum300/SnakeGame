@@ -15,9 +15,6 @@ public:
     explicit help(QWidget *parent = nullptr);
     ~help();
 
-private slots:
-    void on_exit_btn_clicked();
-
 private:
     Ui::help *ui;
 };
